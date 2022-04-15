@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:groshop/Locale/locales.dart';
-import 'package:groshop/Pages/About/about_us.dart';
-import 'package:groshop/Pages/About/contact_us.dart';
+import 'package:groshop/screen/about_us.dart';
+import 'package:groshop/screen/contact_us.dart';
 import 'package:groshop/Pages/DrawerPages/my_orders_drawer.dart';
-import 'package:groshop/Pages/Other/home_sell_page.dart';
+import 'package:groshop/screen/products_screen.dart';
 import 'package:groshop/Pages/Other/language_choose.dart';
 import 'package:groshop/Pages/Other/offers.dart';
 import 'package:groshop/Pages/User/my_account.dart';
@@ -33,7 +33,7 @@ Drawer buildDrawer(BuildContext context) {
                   ?.copyWith(fontSize: 22, letterSpacing: 0.5),
             ),
           ),
-          buildListTile(context, Icons.home, locale.home, HomeSellPage()),
+          buildListTile(context, Icons.home, locale.home, ProductsScreen()),
           buildListTile(
               context, Icons.account_box, locale.myProfile, MyAccount()),
           buildListTile(

@@ -6,6 +6,7 @@ import 'package:groshop/Pages/Other/seller_info.dart';
 import 'package:groshop/Pages/Search/search_result.dart';
 
 import '../../models/product.dart';
+import '../../widgets/rating/rating.dart';
 import 'category_products.dart';
 
 class ProductInfo extends StatefulWidget {

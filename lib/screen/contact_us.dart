@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:groshop/Components/custom_button.dart';
 import 'package:groshop/Components/drawer.dart';
 import 'package:groshop/Components/entry_field.dart';
-import 'package:groshop/Locale/locales.dart';
 import 'package:groshop/Theme/colors.dart';
 
 class ContactUsPage extends StatefulWidget {
@@ -13,12 +12,11 @@ class ContactUsPage extends StatefulWidget {
 class _ContactUsPageState extends State<ContactUsPage> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     return Scaffold(
       drawer: buildDrawer(context),
       appBar: AppBar(
         title: Text(
-          locale.contactUs,
+          "Liên hệ Good Here!",
           style: TextStyle(color: kMainTextColor),
         ),
         centerTitle: true,
@@ -34,7 +32,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
             child: Text(
-              locale.letUsKnowYourFeedbackQueriesIssueRegardingAppFeatures,
+              "Hãy cho chúng tôi biết ý kiến của bạn để chúng tôi có thể nâng cấp chất lượng dịch vụ.",
               style:
                   Theme.of(context).textTheme.subtitle1?.copyWith(fontSize: 19),
             ),
@@ -42,26 +40,26 @@ class _ContactUsPageState extends State<ContactUsPage> {
           Spacer(),
           EntryField(
               labelFontSize: 16,
-              controller: TextEditingController()..text = 'Samantha Smith',
+              controller: TextEditingController()..text = 'Nhập tên bạn',
               labelFontWeight: FontWeight.w400,
-              label: locale.fullName),
+              label: "Họ Tên"),
           EntryField(
-              controller: TextEditingController()..text = '+1 987 654 321',
+              controller: TextEditingController()..text = 'Nhập số điện thoại',
               labelFontSize: 16,
               labelFontWeight: FontWeight.w400,
-              label: locale.phoneNumber),
+              label: "Số điện thoại"),
           EntryField(
               hintStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
                   color: kHintColor,
                   fontSize: 18.3,
                   fontWeight: FontWeight.w400),
-              hint: locale.enterYourMessage,
+              hint: "Nhập góp ý của bạn",
               labelFontSize: 16,
               labelFontWeight: FontWeight.w400,
-              label: locale.yourFeedback),
+              label: "Phản hồi"),
           Spacer(),
           CustomButton(
-            label: locale.submit,
+            label: "Gửi",
             onTap: () => Navigator.pop(context),
           )
         ],

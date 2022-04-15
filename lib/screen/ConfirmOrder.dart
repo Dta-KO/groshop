@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:groshop/Components/custom_button.dart';
-import 'package:groshop/Locale/locales.dart';
 
 import 'my_orders.dart';
 
@@ -16,7 +15,6 @@ class ConfirmOrderPage extends StatefulWidget {
 class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -41,7 +39,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                   top: 70,
                   start: MediaQuery.of(context).size.width / 3.5,
                   child: Text(
-                    locale.confirmOrder,
+                    "Xác Nhận Đơn Hàng",
                     style: TextStyle(
                         letterSpacing: 1,
                         fontWeight: FontWeight.w500,
@@ -93,11 +91,15 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
             flex: 2,
           ),
           Text(
-            locale.yourOrderHasBeenPlacedSuccessfully,
-            style: Theme.of(context).textTheme.subtitle1?.copyWith(fontSize: 22,fontWeight: FontWeight.bold),
+            "Đơn hàng của bạn đã được đặt thành công",
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                ?.copyWith(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           Spacer(),
-          Text(locale.youCanCheckYourOrderProcessInMyOrdersSection,
+          Text(
+              "Bạn có thể kiểm tra quy trình đặt hàng của bạn trong phần Đơn hàng.",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.w300,
@@ -105,13 +107,13 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                   letterSpacing: 0.2,
                   fontSize: 16)),
           Spacer(),
-          FlatButton(
+          ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => MyOrders()));
               },
               child: Text(
-                locale.myOrders.toUpperCase(),
+                "ĐƠN HÀNG CỦA TÔI",
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 18,
@@ -121,7 +123,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
             flex: 4,
           ),
           CustomButton(
-            label: locale.continueShopping,
+            label: "Tiếp tục mua sắm",
             onTap: widget.onOrderCompleted,
             /*() {
               Navigator.popAndPushNamed(context, PageRoutes.homePage);

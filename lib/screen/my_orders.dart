@@ -11,13 +11,12 @@ class MyOrders extends StatefulWidget {
 class _MyOrdersState extends State<MyOrders> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     List<Product> myOrders = [
       Product(
-          image: 'assets/ProductImages/Layer 1438.png',
-          seller: locale.jonathanfarms,
+          image: 'assets/ProductImages/comfor',
+          seller: "Khánh đẹp chai",
           price: "100",
-          name: "",
+          name: "Nước xả Comfor",
           type: ""),
     ];
 
@@ -28,7 +27,7 @@ class _MyOrdersState extends State<MyOrders> {
         preferredSize: Size.fromHeight(60),
         child: AppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          title: Text(locale.myOrders),
+          title: Text("Đơn Hàng của Tôi"),
           centerTitle: true,
         ),
       ),
@@ -44,10 +43,10 @@ class _MyOrdersState extends State<MyOrders> {
             color: Colors.white,
             child: Column(
               children: [
-                buildItem(context, 'assets/seller1.png', locale.operummarket,
+                buildItem(context, 'assets/seller1.png', "locale.operummarket",
                     '2 items'),
-                buildOrderInfoRow(context, '\$30.50', locale.cashOnDelivery,
-                    locale.dispatched,
+                buildOrderInfoRow(context, '\$30.50', "Thanh toán khi giao hàng",
+                    "Đang vận chuyển",
                     borderRadius: 0),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -78,23 +77,23 @@ class _MyOrdersState extends State<MyOrders> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              locale.placed + '  ',
+                              "Đã đặt" + '  ',
                               style: TextStyle(fontSize: 12),
                             ),
                             Text(
-                              locale.packing,
+                              "Đang đóng gói",
                               style: TextStyle(fontSize: 12),
                             ),
                             Text(
-                              locale.dispatched,
+                              "Đang vận chuyển",
                               style: TextStyle(fontSize: 12),
                             ),
                             Text(
-                              locale.track,
+                              "Theo dõi",
                               style: TextStyle(fontSize: 12),
                             ),
                             Text(
-                              ' ' + locale.delivered,
+                              ' ' + "Đã giao hàng",
                               style: TextStyle(fontSize: 12),
                             ),
                           ],
@@ -111,20 +110,20 @@ class _MyOrdersState extends State<MyOrders> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        locale.orderedItems,
+                        "Dang mục mặt hàng",
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
-                      buildAmountRow(locale.freshRedOnios, '\$14.00'),
+                      buildAmountRow("Xà bông", '\$14.00'),
                       SizedBox(
                         height: 5,
                       ),
                       Text('Qnt. 1',
                           style: Theme.of(context).textTheme.subtitle2),
                       Text(
-                        locale.orderedItems,
+                        "locale.orderedItems",
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
-                      buildAmountRow(locale.freshLadiesFinger, '\$14.00'),
+                      buildAmountRow("Máy giặt", '\$300.00'),
                       SizedBox(
                         height: 5,
                       ),
@@ -138,9 +137,9 @@ class _MyOrdersState extends State<MyOrders> {
                       left: 8.0, right: 8, bottom: 10, top: 5),
                   child: Column(
                     children: [
-                      buildAmountRow(locale.deliveryFee, '\$4.50'),
-                      buildAmountRow(locale.promoCode, '-\$2.00'),
-                      buildAmountRow(locale.amountToPay, '\$30.50',
+                      buildAmountRow("Phí vận chuyển", '\$4.50'),
+                      buildAmountRow("Mã giảm giá", '-\$2.00'),
+                      buildAmountRow("Tổng thanh toán", '\$30.50',
                           fontWeight: FontWeight.w700),
                     ],
                   ),
@@ -154,7 +153,7 @@ class _MyOrdersState extends State<MyOrders> {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return buildCompleteCard(context, myOrders[index].image,
-                    myOrders[index].name, '3 items');
+                    myOrders[index].name, '3 mặt hàng');
               }),
         ],
       ),

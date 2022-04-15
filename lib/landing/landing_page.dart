@@ -1,11 +1,11 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:groshop/Pages/Other/home_sell_page.dart';
+import 'package:groshop/screen/products_screen.dart';
 import 'package:groshop/Pages/User/my_account.dart';
 
-import '../Pages/Checkout/my_orders.dart';
-import '../Pages/Other/home_page.dart';
+import '../screen/my_orders.dart';
+import '../screen/home_screen.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -197,11 +197,11 @@ class _NavigationScreenState extends State<NavigationScreen>
   @override
   Widget build(BuildContext context) {
     if (widget.index == 0) {
-      return HomePage();
+      return HomeScreen();
     } else if (widget.index == 1) {
       return MyOrders();
     } else if (widget.index == 2) {
-      return HomePage();
+      return HomeScreen();
     } else {
       return MyAccount();
     }

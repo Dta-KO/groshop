@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groshop/Locale/locales.dart';
-import 'package:groshop/Pages/Other/home_sell_page.dart';
 import 'package:groshop/Pages/Search/search_result.dart' as search;
+import 'package:groshop/widgets/products/products_ui.dart';
 
 import '../../models/category.dart';
 import '../../models/product.dart';
-import '../Other/home_page.dart';
+import '../../widgets/categories/category_ui.dart';
 
 class SearchHistory extends StatefulWidget {
   @override
@@ -22,11 +22,11 @@ class _SearchHistoryState extends State<SearchHistory> {
       Category(
           image: 'assets/CategoryImages/Vegetables.png',
           name: locale.vegetables,
-          type: ""),
+         ),
       Category(
           image: 'assets/CategoryImages/Bakery.png',
           name: locale.bakery,
-          type: ""),
+      ),
     ];
     final List<Product> products = [
       Product(
@@ -170,7 +170,7 @@ class _SearchHistoryState extends State<SearchHistory> {
                     .subtitle1
                     ?.copyWith(fontSize: 18)),
           ),
-          buildList(products),
+          buildListProducts(products),
         ],
       ),
     );

@@ -1,10 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:groshop/Auth/Login/sign_in.dart';
-import 'package:groshop/Auth/Login/sign_up.dart';
 import 'package:groshop/landing/landing_page.dart';
 
 import 'Locale/locales.dart';
@@ -12,7 +11,11 @@ import 'Routes/routes.dart';
 import 'Theme/style.dart';
 import 'language_cubit.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      // options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId),
+      );
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.green));
   runApp(Phoenix(child: GoodHere()));

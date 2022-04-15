@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:groshop/Components/custom_button.dart';
-import 'package:groshop/Locale/locales.dart';
 import 'package:groshop/Routes/routes.dart';
 
-import '../../models/address.dart';
+import '../models/address.dart';
 
 class AddressPage extends StatefulWidget {
   final VoidCallback onBackButtonPressed;
@@ -19,10 +18,10 @@ class _AddressPageState extends State<AddressPage> {
 
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
+    // var locale = AppLocalizations.of(context);
     List<Address> addresses = [
       Address(
-          heading: locale.home,
+          heading: "Nhà riêng",
           address: 'Xóm 2, Vân Trường, Tiền Hải, Thái Bình'),
     ];
 
@@ -50,7 +49,7 @@ class _AddressPageState extends State<AddressPage> {
                   top: 70,
                   start: MediaQuery.of(context).size.width / 3.5,
                   child: Text(
-                    locale.selectAddress,
+                    "Chọn địa chỉ",
                     style: TextStyle(
                         letterSpacing: 1,
                         fontWeight: FontWeight.w500,

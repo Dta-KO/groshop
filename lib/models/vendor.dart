@@ -9,6 +9,7 @@ class Vendor {
   Address? address;
   String? email;
   String? sex;
+  int? rating;
   String? birthday;
   int? amount;
   String? image;
@@ -24,6 +25,7 @@ class Vendor {
       this.sex,
       this.birthday,
       this.amount,
+      this.rating,
       this.image,
       this.purchasedProducts,
       this.promoCodes});
