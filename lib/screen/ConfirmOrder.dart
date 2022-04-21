@@ -92,6 +92,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
           ),
           Text(
             "Đơn hàng của bạn đã được đặt thành công",
+            textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
@@ -108,6 +109,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                   fontSize: 16)),
           Spacer(),
           ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.green),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => MyOrders()));
@@ -115,7 +117,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
               child: Text(
                 "ĐƠN HÀNG CỦA TÔI",
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w500),
               )),

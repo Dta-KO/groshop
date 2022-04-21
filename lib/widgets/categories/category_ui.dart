@@ -67,10 +67,10 @@ GestureDetector buildSubCategoryRow(
         margin: EdgeInsets.only(right: 16),
         padding: EdgeInsets.all(10),
         width: 160,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Colors.grey)
-        ),
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(5),
+        //   border: Border.all(color: Colors.grey)
+        // ),
         child: Column(
           children: [
             ClipRRect(

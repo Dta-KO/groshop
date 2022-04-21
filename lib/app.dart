@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:groshop/Routes/routes.dart';
 import 'package:groshop/landing/landing_page.dart';
 import 'package:groshop/screen/Login/sign_in.dart';
-import 'package:groshop/screen/Login/verification.dart';
 
 class MyApp extends StatefulWidget {
   static final String route = "/MyApp";
@@ -92,19 +91,10 @@ class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // onGenerateRoute: (settings) {
-      //   if (settings.name == PageRoutes.verification) {
-      //     final args = settings.arguments as String;
-      //     return MaterialPageRoute(
-      //       builder: (context) {
-      //         return VerificationPage(
-      //           phoneNumber: args,
-      //         );
-      //       },
-      //     );
-      //   }
-      // },
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primaryColor: Colors.green,
+          appBarTheme: AppBarTheme(color: Colors.green)),
       routes: PageRoutes.routes(),
       home: RenderFirstScreen(),
     );

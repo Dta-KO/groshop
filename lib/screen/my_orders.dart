@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:groshop/Locale/locales.dart';
 import 'package:groshop/Pages/Other/add_review.dart';
 import 'package:groshop/models/product.dart';
 
@@ -13,7 +12,7 @@ class _MyOrdersState extends State<MyOrders> {
   Widget build(BuildContext context) {
     List<Product> myOrders = [
       Product(
-          image: 'assets/ProductImages/comfor',
+          image: 'assets/ProductImages/comfor.png',
           seller: "Khánh đẹp chai",
           price: "100",
           name: "Nước xả Comfor",
@@ -22,15 +21,22 @@ class _MyOrdersState extends State<MyOrders> {
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
-//      drawer: buildDrawer(context),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          title: Text("Đơn Hàng của Tôi"),
-          centerTitle: true,
-        ),
-      ),
+          preferredSize: Size.fromHeight(60),
+          child: Container(
+            decoration: new BoxDecoration(
+              color: Colors.green,
+              boxShadow: [new BoxShadow(blurRadius: 15.0)],
+              borderRadius: new BorderRadius.vertical(
+                  bottom: new Radius.elliptical(
+                      MediaQuery.of(context).size.width, 60.0)),
+            ),
+            child: AppBar(
+              backgroundColor: Colors.green,
+              title: Text("Đơn Hàng của Tôi"),
+              centerTitle: true,
+            ),
+          )),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
@@ -44,9 +50,9 @@ class _MyOrdersState extends State<MyOrders> {
             child: Column(
               children: [
                 buildItem(context, 'assets/seller1.png', "Cửa hàng số 1",
-                    '2 items'),
-                buildOrderInfoRow(context, '\$30.50', "Thanh toán khi giao hàng",
-                    "Đang vận chuyển",
+                    '2 Đơn hàng'),
+                buildOrderInfoRow(
+                    context, '2.900.000', "Khi giao hàng", "Đang vận chuyển",
                     borderRadius: 0),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -71,34 +77,6 @@ class _MyOrdersState extends State<MyOrders> {
                       SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Đã đặt" + '  ',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            Text(
-                              "Đang đóng gói",
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            Text(
-                              "Đang vận chuyển",
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            Text(
-                              "Theo dõi",
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            Text(
-                              ' ' + "Đã giao hàng",
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -117,8 +95,7 @@ class _MyOrdersState extends State<MyOrders> {
                       SizedBox(
                         height: 5,
                       ),
-                      Text('Q1',
-                          style: Theme.of(context).textTheme.subtitle2),
+                      Text('Q1', style: Theme.of(context).textTheme.subtitle2),
                       Text(
                         "Sản phẩm:",
                         style: Theme.of(context).textTheme.subtitle2,
@@ -127,8 +104,7 @@ class _MyOrdersState extends State<MyOrders> {
                       SizedBox(
                         height: 5,
                       ),
-                      Text('Q1',
-                          style: Theme.of(context).textTheme.subtitle2),
+                      Text('Q1', style: Theme.of(context).textTheme.subtitle2),
                     ],
                   ),
                 ),
@@ -173,7 +149,6 @@ class _MyOrdersState extends State<MyOrders> {
 
   GestureDetector buildCompleteCard(
       BuildContext context, String img, String item, String category) {
-    var locale = AppLocalizations.of(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -200,7 +175,6 @@ class _MyOrdersState extends State<MyOrders> {
   Container buildOrderInfoRow(BuildContext context, String price,
       String paymentMode, String orderStatus,
       {double borderRadius = 8}) {
-    var locale = AppLocalizations.of(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius:
@@ -210,11 +184,11 @@ class _MyOrdersState extends State<MyOrders> {
       padding: const EdgeInsets.symmetric(horizontal: 11.0, vertical: 12),
       child: Row(
         children: [
-          buildGreyColumn(context, locale.payment, price),
+          buildGreyColumn(context, "Số tiền thanh toán", price),
           Spacer(),
-          buildGreyColumn(context, locale.paymentMode, paymentMode),
+          buildGreyColumn(context, "Phương thức thanh toán", paymentMode),
           Spacer(),
-          buildGreyColumn(context, locale.orderStatus, orderStatus,
+          buildGreyColumn(context, "Trạng thái đặt hàng", orderStatus,
               text2Color: Theme.of(context).primaryColor),
         ],
       ),
@@ -223,7 +197,6 @@ class _MyOrdersState extends State<MyOrders> {
 
   Padding buildItem(
       BuildContext context, String img, String name, String category) {
-    var locale = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Stack(
@@ -255,7 +228,7 @@ class _MyOrdersState extends State<MyOrders> {
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
                   SizedBox(height: 16),
-                  Text(locale.orderedOn + ' 23 Jun, 11:40',
+                  Text('11:40 - 21/4/2022',
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
@@ -269,7 +242,7 @@ class _MyOrdersState extends State<MyOrders> {
             end: 0,
             bottom: 0,
             child: Text(
-              locale.orderID + ' 2254126',
+              "ID" + ' 2254126',
               textAlign: TextAlign.right,
               style: Theme.of(context)
                   .textTheme

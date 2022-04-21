@@ -26,11 +26,12 @@ dependencies:
       ref: master
   provider: ^6.0.2
   carousel_slider: ^4.0.0
-#  firebase_core: ^1.14.0
+  firebase_core: ^1.14.0
   firebase_messaging: ^11.2.12
   firebase_analytics: ^9.1.4
   cloud_firestore: ^3.1.11
   firebase_auth: ^3.3.13
+  firebase_storage: ^10.2.12
   firebase_crashlytics: ^2.6.1
   animated_bottom_navigation_bar: ^0.3.2
   auto_size_text: ^3.0.0
@@ -51,6 +52,8 @@ dependencies:
   geocode: ^1.0.1
   http: ^0.13.4
   image_picker: ^0.8.5
+  timeago: ^3.0.2
+
 
 
 dev_dependencies:
@@ -61,7 +64,7 @@ dev_dependencies:
 flutter_icons:
   android: "ic_launcher"
   ios: true
-  image_path: "assets/logo.png"
+  image_path: "assets/logo_square.png"
 
 flutter:
   uses-material-design: true

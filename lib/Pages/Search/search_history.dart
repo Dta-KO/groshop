@@ -17,36 +17,53 @@ class _SearchHistoryState extends State<SearchHistory> {
 
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     final List<Category> categories = [
       Category(
-          image: 'assets/CategoryImages/Vegetables.png',
-          name: locale.vegetables,
+          image: 'assets/CategoryImages/hotel.png',
+          name: "Khách sạn",
          ),
       Category(
-          image: 'assets/CategoryImages/Bakery.png',
-          name: locale.bakery,
+          image: 'assets/CategoryImages/iron.png',
+          name: "Giặt sấy",
       ),
     ];
     final List<Product> products = [
       Product(
-          image: "assets/ProductImages/onion.png",
-          name: locale.freshRedOnios,
-          seller: "Pajeroma",
-          price: "\$30.0",
-          type: ""),
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
       Product(
-          image: "assets/ProductImages/onion.png",
-          name: locale.freshRedOnios,
-          seller: "Pajeroma",
-          price: "\$30.0",
-          type: ""),
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
       Product(
-          image: "assets/ProductImages/onion.png",
-          name: locale.freshRedOnios,
-          seller: "Pajeroma",
-          price: "\$30.0",
-          type: ""),
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +81,7 @@ class _SearchHistoryState extends State<SearchHistory> {
               .headline6
               ?.copyWith(color: Colors.black, fontSize: 18),
           decoration: InputDecoration(
-              hintText: '  ' + locale.searchOnGroShop,
+              hintText: '  ' + "Tìm kiếm tại Good Here...",
               hintStyle: Theme.of(context).textTheme.subtitle2,
               suffixIcon: IconButton(
                 icon: Icon(
@@ -102,7 +119,7 @@ class _SearchHistoryState extends State<SearchHistory> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 16),
                       child: Text(
-                        locale.recentlySearched,
+                        "Tìm kiếm gần đây",
                         style: Theme.of(context)
                             .textTheme
                             .headline6
@@ -143,7 +160,7 @@ class _SearchHistoryState extends State<SearchHistory> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12),
             child: Text(
-              locale.chooseCategory,
+              "Chọn loại sản phầm",
               style: Theme.of(context).textTheme.headline6?.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
@@ -164,7 +181,7 @@ class _SearchHistoryState extends State<SearchHistory> {
           ),
           Padding(
             padding: EdgeInsets.all(16),
-            child: Text(locale.featuredProducts,
+            child: Text("Sản phẩm phổ biến",
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1

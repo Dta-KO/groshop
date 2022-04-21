@@ -19,7 +19,6 @@ class ProductInfo extends StatefulWidget {
 class _ProductInfoState extends State<ProductInfo> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     List<Product> sellerProducts = [
       Product(
           image: "assets/ProductImages/comfor.png",
@@ -96,7 +95,9 @@ class _ProductInfoState extends State<ProductInfo> {
                     top: 90,
                     end: 5,
                     child: IconButton(
-                        onPressed: () {}, icon: Icon(Icons.favorite_border))),
+                        onPressed: () {
+
+                        }, icon: Icon(Icons.favorite_border))),
               ],
             ),
             Padding(
@@ -106,7 +107,7 @@ class _ProductInfoState extends State<ProductInfo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    locale.freshLadiesFinger,
+                    "Máy giặt",
                     style: Theme.of(context).textTheme.headline3?.copyWith(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -135,7 +136,7 @@ class _ProductInfoState extends State<ProductInfo> {
                   ),
                   Row(
                     children: [
-                      Text("32.000 VNĐ",
+                      Text("3.200.000 VNĐ",
                           style: TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 20)),
                       Spacer(),
@@ -147,7 +148,7 @@ class _ProductInfoState extends State<ProductInfo> {
                                     builder: (context) => Reviews()));
                           },
                           child: Text(
-                            locale.readAllReviews + ' ',
+                            "Đánh giá" + ' ',
                             style: TextStyle(
                                 color: Color(
                                   0xffa9a9a9,
@@ -182,7 +183,7 @@ class _ProductInfoState extends State<ProductInfo> {
                 color: Colors.white,
                 size: 16,
               ),
-              label: locale.addToCart,
+              label: "Thêm vào giỏ hàng",
             ),
             SizedBox(
               height: 10,
@@ -195,13 +196,13 @@ class _ProductInfoState extends State<ProductInfo> {
                 },
                 child: RichText(
                   text: TextSpan(
-                      text: locale.moreBy + ' ',
+                      text: "Sản phẩm cùng cửa hàng" + ' ',
                       style: TextStyle(
                           color: Theme.of(context).backgroundColor,
                           fontSize: 18),
                       children: <TextSpan>[
                         TextSpan(
-                            text: locale.seller,
+                            text: "Chủ cửa hàng",
                             style: TextStyle(fontWeight: FontWeight.w500)),
                       ]),
                 ),
@@ -212,10 +213,10 @@ class _ProductInfoState extends State<ProductInfo> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                CategoryProduct(locale.viewAll)));
+                                CategoryProduct("Xem tất cả")));
                   },
                   child: Text(
-                    locale.viewAll,
+                    "Xem tất cả",
                     style: TextStyle(color: Colors.grey[500], fontSize: 12),
                   )),
             ),

@@ -5,6 +5,7 @@ import 'package:groshop/Pages/User/my_account.dart';
 
 import '../screen/home_screen.dart';
 import '../screen/my_orders.dart';
+import '../screen/notify_screen.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -183,7 +184,7 @@ class _NavigationScreenState extends State<NavigationScreen>
     } else if (widget.index == 1) {
       return MyOrders();
     } else if (widget.index == 2) {
-      return HomeScreen();
+      return NotifyScreen();
     } else {
       return MyAccount();
     }

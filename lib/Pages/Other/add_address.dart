@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groshop/Components/custom_button.dart';
 import 'package:groshop/Components/entry_field.dart';
-import 'package:groshop/Locale/locales.dart';
-import 'package:groshop/Theme/colors.dart';
 
 class AddAddressPage extends StatefulWidget {
   @override
@@ -12,21 +10,25 @@ class AddAddressPage extends StatefulWidget {
 class _AddAddressPageState extends State<AddAddressPage> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          locale.addAddress,
-          style: TextStyle(fontSize: 18, color: kMainTextColor),
+          "Thêm Địa Chỉ",
+          style: TextStyle(fontSize: 18, color: Colors.white),
         ),
         actions: [
-          FlatButton(
-              onPressed: () {},
-              child: Text(
-                locale.continueText,
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 18),
-              ))
+          Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: Align(
+              child: GestureDetector(
+                onTap: () {},
+                child: Text(
+                  "Tiếp tục",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
+            ),
+          )
         ],
       ),
       body: Column(
@@ -59,8 +61,8 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     horizontalPadding: 0,
                     labelFontSize: 15,
                     labelFontWeight: FontWeight.w400,
-                    label: locale.addressTitle,
-                    controller: TextEditingController()..text = locale.home,
+                    label: "Tiêu đề",
+                    controller: TextEditingController()..text = "Nhà riêng",
                   ),
                 ),
               ],
@@ -74,7 +76,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                 Icon(Icons.location_on, size: 20),
                 SizedBox(width: 15),
                 Text(
-                  '1124, Patestine Street, Jackson Tower,\nNear City Garden, New York, USA',
+                  'Kp3, Mỹ Bình, Phan Rang',
                   style: TextStyle(fontSize: 15),
                 ),
               ],

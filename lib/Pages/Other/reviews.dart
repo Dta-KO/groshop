@@ -11,12 +11,11 @@ class Reviews extends StatefulWidget {
 class _ReviewsState extends State<Reviews> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text(
-          locale.freshLadiesFinger,
+          "Máy giặt",
           style: TextStyle(color: kMainTextColor),
         ),
         centerTitle: true,
@@ -36,7 +35,7 @@ class _ReviewsState extends State<Reviews> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        locale.avgRatings,
+                        "Điểm trung bình",
                         style: Theme.of(context)
                             .textTheme
                             .headline6
@@ -44,7 +43,7 @@ class _ReviewsState extends State<Reviews> {
                       ),
                       buildBigRatingCard(context),
                       Text(
-                        '124 ' + locale.ratings,
+                        '124 ' + "số lần đánh giá",
                         style: Theme.of(context)
                             .textTheme
                             .headline6
@@ -81,7 +80,7 @@ class _ReviewsState extends State<Reviews> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    locale.recentReviews,
+                    "Đánh giá gần đây",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         color: Colors.grey[600], fontWeight: FontWeight.w500),
@@ -116,7 +115,7 @@ class _ReviewsState extends State<Reviews> {
         children: [
           ListTile(
             title: Text(
-              'Heena Taylor',
+              'Khánh đẹp chai',
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
             ),
@@ -162,7 +161,7 @@ class _ReviewsState extends State<Reviews> {
           Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et doloretiop nmagna aliqua.',
+              'Sản phẩm tốt, chất lượng tuyệt vời.',
               style: TextStyle(
                   fontWeight: FontWeight.w300,
                   letterSpacing: 0.1,

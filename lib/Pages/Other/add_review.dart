@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:groshop/Components/entry_field.dart';
-import 'package:groshop/Locale/locales.dart';
 import 'package:groshop/Pages/Other/product_info.dart';
 
 class AddReviewPage extends StatefulWidget {
@@ -12,7 +11,6 @@ class AddReviewPage extends StatefulWidget {
 class _AddReviewPageState extends State<AddReviewPage> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -43,7 +41,7 @@ class _AddReviewPageState extends State<AddReviewPage> {
                 start: MediaQuery.of(context).size.width / 3,
                 textDirection: TextDirection.ltr,
                 child: Text(
-                  locale.addReview,
+                  "Thêm đánh giá",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -65,7 +63,7 @@ class _AddReviewPageState extends State<AddReviewPage> {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          'assets/ProductImages/onion.png',
+                          'assets/ProductImages/comfor.png',
                           height: 110,
                           fit: BoxFit.fitHeight,
                         )),
@@ -73,7 +71,7 @@ class _AddReviewPageState extends State<AddReviewPage> {
             ],
           ),
           Text(
-            locale.freshRedOnios,
+            "Cửa hàng  Giặt ủi Kim Khánh",
             style: Theme.of(context)
                 .textTheme
                 .headline6
@@ -83,12 +81,12 @@ class _AddReviewPageState extends State<AddReviewPage> {
             height: 10,
           ),
           Text(
-            'Jonathon Farms',
+            'Nguyễn Kim Khánh',
             style: Theme.of(context).textTheme.subtitle2,
           ),
           Spacer(),
           Text(
-            locale.howWasYourExperience,
+            "Trải nghiệm của bạn như thế nào?",
             style: Theme.of(context)
                 .textTheme
                 .headline6
@@ -129,7 +127,6 @@ class _AddReviewPageState extends State<AddReviewPage> {
                     Icons.sentiment_very_satisfied,
                     color: Colors.green,
                   );
-
               }
             },
             onRatingUpdate: (rating) {
@@ -145,8 +142,18 @@ class _AddReviewPageState extends State<AddReviewPage> {
           EntryField(
             labelFontWeight: FontWeight.w300,
             labelFontSize: 18,
-            label: locale.writeYourFeedback,
-            hint: locale.enterYourReview,
+            label: "Đánh giá",
+            hint: "Nhập feedback của bạn",
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.green),
+              child: Text("Gửi"),
+              onPressed: () {
+                //todo
+              },
+            ),
           ),
           Spacer(
             flex: 6,
