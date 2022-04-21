@@ -205,7 +205,7 @@ packages:
     source: hosted
     version: "3.3.11"
   firebase_core:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"

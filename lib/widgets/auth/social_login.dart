@@ -32,7 +32,7 @@ signInWithPhone(
       final User currentUser = _auth.currentUser!;
       assert(user?.uid == currentUser.uid);
       // Once signed in, return the UserCredential
-      Navigator.popAndPushNamed(context, PageRoutes.signUp);
+      Navigator.pushNamedAndRemoveUntil(context, PageRoutes.signUp, (route) =>false);
     },
     verificationFailed: (FirebaseAuthException e) {
       if (e.code == 'invalid-phone-number') {
@@ -47,7 +47,7 @@ signInWithPhone(
     codeSent: (String verificationId, int? resendToken) async {
       if(smsCode!=null){
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: smsCode!);
+            verificationId: verificationId, smsCode: smsCode);
         // Sign the user in (or link) with the credential
         await _auth.signInWithCredential(credential);
       }

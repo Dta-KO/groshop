@@ -4,8 +4,13 @@ import 'package:groshop/Routes/routes.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../db/viewmodel/viewmodel_category.dart';
+import '../models/address.dart';
 import '../models/category.dart';
+import '../models/product.dart';
+import '../models/vendor.dart';
 import '../widgets/categories/category_ui.dart';
+import '../widgets/products/products_ui.dart';
+import '../widgets/vendor/vendor_ui.dart';
 
 class ProductsScreen extends StatelessWidget {
   final String id;
@@ -14,6 +19,88 @@ class ProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Vendor> nearVendors = [
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store1.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store2.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store3.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store1.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store2.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store3.png',
+        address: Address(),
+        rating: 5,
+      )
+    ];
+    List<Product> products = [
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+    ];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -115,6 +202,7 @@ class ProductsScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
+                buildListVendor(nearVendors),
                 Divider(
                   thickness: 1,
                   color: Colors.grey,
@@ -126,6 +214,8 @@ class ProductsScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
+                buildListProducts(products),
+
               ]),
             )
           ],

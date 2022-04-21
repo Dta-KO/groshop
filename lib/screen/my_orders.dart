@@ -43,7 +43,7 @@ class _MyOrdersState extends State<MyOrders> {
             color: Colors.white,
             child: Column(
               children: [
-                buildItem(context, 'assets/seller1.png', "locale.operummarket",
+                buildItem(context, 'assets/seller1.png', "Cửa hàng số 1",
                     '2 items'),
                 buildOrderInfoRow(context, '\$30.50', "Thanh toán khi giao hàng",
                     "Đang vận chuyển",
@@ -110,24 +110,24 @@ class _MyOrdersState extends State<MyOrders> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Dang mục mặt hàng",
+                        "Sản phẩm:",
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
-                      buildAmountRow("Xà bông", '\$14.00'),
+                      buildAmountRow("Xà bông", '100.000'),
                       SizedBox(
                         height: 5,
                       ),
-                      Text('Qnt. 1',
+                      Text('Q1',
                           style: Theme.of(context).textTheme.subtitle2),
                       Text(
-                        "locale.orderedItems",
+                        "Sản phẩm:",
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
-                      buildAmountRow("Máy giặt", '\$300.00'),
+                      buildAmountRow("Máy giặt", '3.000.000 VNĐ'),
                       SizedBox(
                         height: 5,
                       ),
-                      Text('Qnt. 1',
+                      Text('Q1',
                           style: Theme.of(context).textTheme.subtitle2),
                     ],
                   ),
@@ -137,9 +137,9 @@ class _MyOrdersState extends State<MyOrders> {
                       left: 8.0, right: 8, bottom: 10, top: 5),
                   child: Column(
                     children: [
-                      buildAmountRow("Phí vận chuyển", '\$4.50'),
-                      buildAmountRow("Mã giảm giá", '-\$2.00'),
-                      buildAmountRow("Tổng thanh toán", '\$30.50',
+                      buildAmountRow("Phí vận chuyển", '100.000 VNĐ'),
+                      buildAmountRow("Mã giảm giá", '- 200.000 VNĐ'),
+                      buildAmountRow("Tổng thanh toán", '2.900.000 VNĐ',
                           fontWeight: FontWeight.w700),
                     ],
                   ),
@@ -153,7 +153,7 @@ class _MyOrdersState extends State<MyOrders> {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return buildCompleteCard(context, myOrders[index].image,
-                    myOrders[index].name, '3 mặt hàng');
+                    myOrders[index].name, '02 mặt hàng');
               }),
         ],
       ),
@@ -190,7 +190,7 @@ class _MyOrdersState extends State<MyOrders> {
           children: [
             buildItem(context, img, item, category),
             buildOrderInfoRow(
-                context, '\$30.50', locale.cashOnDelivery, locale.delivered),
+                context, '300.000', "Thanh toán tiền mặt", "Đã giao"),
           ],
         ),
       ),

@@ -4,8 +4,10 @@ import 'package:groshop/Locale/locales.dart';
 import 'package:groshop/Pages/Other/reviews.dart';
 import 'package:groshop/Pages/Other/seller_info.dart';
 import 'package:groshop/Pages/Search/search_result.dart';
+import 'package:groshop/Routes/routes.dart';
 
 import '../../models/product.dart';
+import '../../screen/ConfirmOrder.dart';
 import '../../widgets/rating/rating.dart';
 import 'category_products.dart';
 
@@ -20,11 +22,41 @@ class _ProductInfoState extends State<ProductInfo> {
     var locale = AppLocalizations.of(context);
     List<Product> sellerProducts = [
       Product(
-          image: "assets/ProductImages/onion.png",
-          name: locale.freshRedOnios,
-          seller: "Pajeroma",
-          price: "\$30.0",
-          type: ""),
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
     ];
 
     return Scaffold(
@@ -35,7 +67,7 @@ class _ProductInfoState extends State<ProductInfo> {
             Stack(
               children: [
                 //Container(),
-                Image.asset("assets/ProductImages/lady finger.png",
+                Image.asset("assets/ProductImages/washing.png",
                     fit: BoxFit.fill),
                 Positioned.directional(
                     textDirection: Directionality.of(context),
@@ -53,10 +85,10 @@ class _ProductInfoState extends State<ProductInfo> {
                     child: IconButton(
                         onPressed: () {
                           //todo
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => CheckOutNavigator()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ConfirmOrderPage(()=>Navigator.popAndPushNamed(context, PageRoutes.productsScreen))));
                         },
                         icon: ImageIcon(AssetImage('assets/ic_cart.png')))),
                 Positioned.directional(

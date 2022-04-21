@@ -44,9 +44,54 @@ class HomeScreen extends StatelessWidget  {
         image: 'assets/StoreImages/store3.png',
         address: Address(),
         rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store1.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store2.png',
+        address: Address(),
+        rating: 5,
+      ),
+      Vendor(
+        id: "1",
+        name: "Cửa hàng Kim Khánh",
+        image: 'assets/StoreImages/store3.png',
+        address: Address(),
+        rating: 5,
       )
     ];
     List<Product> products = [
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
+      Product(
+          image: "assets/ProductImages/comfor.png",
+          name: "Nước xả",
+          type: "Nước xả",
+          price: "\$7.0",
+          seller: "Cửa hàng Ánh Kim"),
+      Product(
+          image: "assets/ProductImages/washing.png",
+          name: "Máy giặt lồng ngang",
+          type: "Máy giặt",
+          price: "\$300.0",
+          seller: "CTY TNHH Kim Khánh"),
       Product(
           image: "assets/ProductImages/comfor.png",
           name: "Nước xả",
