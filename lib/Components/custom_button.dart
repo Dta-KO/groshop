@@ -35,7 +35,6 @@ class CustomButton extends StatefulWidget {
 class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
     return Container(
       width: widget.width,
       margin: EdgeInsets.fromLTRB(widget.margin??0, 0, widget.margin??0, 0),
@@ -65,7 +64,7 @@ class _CustomButtonState extends State<CustomButton> {
             widget.prefixIcon != null ? widget.prefixIcon! : SizedBox.shrink(),
             SizedBox(width: widget.iconGap),
             Text(
-              widget.label ?? locale.continueText,
+              widget.label ?? "Tiếp tục",
               textAlign: TextAlign.center,)
           ],
         ),

@@ -46,4 +46,26 @@ class RepositoryCategoryImpl with RepositoryCategory {
     // TODO: implement removeCategory
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<Category>> getSubCategoriesByName(String name) async {
+    final categoriesRef = firestore
+        .collection(Constants.vi)
+        .doc(Constants.category)
+        .collection(name)
+        .withConverter<Category>(
+      fromFirestore: (snapshot, _) => Category.fromJson(snapshot.data()!),
+      toFirestore: (category, _) => category.toJson(),
+    );
+
+    List<DocumentSnapshot<Category>> categoriesSnapshot =
+        await categoriesRef.get().then((value) => value.docs);
+
+    List<Category> categories = [];
+    categoriesSnapshot.forEach((element) {
+      categories.add(element.data()!);
+    });
+
+    return categories;
+  }
 }

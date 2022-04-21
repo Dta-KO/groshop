@@ -1,11 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:groshop/screen/products_screen.dart';
 import 'package:groshop/Pages/User/my_account.dart';
 
-import '../screen/my_orders.dart';
 import '../screen/home_screen.dart';
+import '../screen/my_orders.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -78,23 +77,6 @@ class _LandingPageState extends State<LandingPage>
           index: _bottomNavIndex,
           iconData: iconList[_bottomNavIndex],
         ),
-        // floatingActionButton: ScaleTransition(
-        //   scale: animation,
-        //   child: FloatingActionButton(
-        //     elevation: 8,
-        //     backgroundColor: HexColor('#FFCC00'),
-        //     child: Icon(
-        //       Icons.home,
-        //       color: HexColor('#4c8c4a'),
-        //     ),
-        //     onPressed: () {
-        //       _animationController.reset();
-        //       _animationController.forward();
-        //       setState(() => _bottomNavIndex = 4);
-        //     },
-        //   ),
-        // ),
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: AnimatedBottomNavigationBar.builder(
           itemCount: iconList.length,
           tabBuilder: (int index, bool isActive) {

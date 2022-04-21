@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:groshop/Components/drawer.dart';
 import 'package:groshop/Pages/Search/search_history.dart';
-import 'package:groshop/db/viewmodel/viewmodel_sub_category.dart';
+import 'package:groshop/Routes/routes.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-import '../models/product.dart';
-import '../widgets/products/products_ui.dart';
+import '../db/viewmodel/viewmodel_category.dart';
+import '../models/category.dart';
+import '../widgets/categories/category_ui.dart';
 
 class ProductsScreen extends StatelessWidget {
+  final String id;
+
+  ProductsScreen({required this.id, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final username =
-        ScopedModel.of<ViewModelSubCategory>(context, rebuildOnChange: true).subCategories;
-    // final counter =
-    //     ScopedModel.of<CounterModel>(context, rebuildOnChange: true).counter;
     return Scaffold(
-      // backgroundColor: Colors.transparent,
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            SizedBox(height: 12.0),
             Column(
               children: [
                 Container(
@@ -39,12 +36,12 @@ class ProductsScreen extends StatelessWidget {
                           'assets/ic_cart.png',
                         )),
                         onPressed: () {
-                          //todo
                           // Navigator.push(
                           //     context,
                           //     MaterialPageRoute(
                           //         builder: (context) =>
                           //             CheckOutNavigator()));
+                          Navigator.pushNamed(context, PageRoutes.cartPage);
                         },
                       ),
                     ],
@@ -76,38 +73,74 @@ class ProductsScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 100),
-              child: ListView(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                children: [
-                  buildCompleteProductsVerticalList(
-                      context, products, "Gần bạn"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Giảm giá"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Giặt chăm, drap, mền"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Giặt đồ baby, nhạy cảm"),
-                  buildCompleteProductsVerticalList(context, products2,
-                      "Giặt gấu bông, giặt giày, túi xách, vali, balo"),
-                  buildCompleteProductsVerticalList(
-                      context, products, "Giặt hấp, vest, áo dài, đầm"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Giặt sấy tổng hợp"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Giặt ướt"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Sấy khô, sấy thơm"),
-                  buildCompleteProductsVerticalList(
-                      context, products2, "Dịch vụ khác"),
-                  SizedBox(height: 20.0),
-                ],
-              ),
-            ),
+              padding: EdgeInsets.all(12),
+              child: Column(children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Danh mục sản phẩm",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ),
+                Container(
+                  height: 140,
+                  child: ScopedModel(
+                    model: ViewModelCategory(),
+                    child: Padding(
+                        padding: EdgeInsets.only(top: 5),
+                        child: ScopedModelDescendant<ViewModelCategory>(
+                            builder: (context, child, model) {
+                          model.getSubCategories(id);
+                          return ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: model.subCategories.length,
+                            itemBuilder: (context, index) {
+                              return buildSubCategoryRow(
+                                  index, context, model.subCategories);
+                            },
+                          );
+                        })),
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Cửa hàng gần bạn",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Sản phẩm khuyến mại",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ]),
+            )
           ],
         ),
       ),
     );
   }
+}
+
+int getIndexSubCategory(List<Category> categories, String categoryName) {
+  int indexCategory = 0;
+  for (int i = 0; i < categories.length; i++) {
+    if (categories[i].name == categoryName) {
+      indexCategory = i;
+    }
+  }
+  return indexCategory;
 }

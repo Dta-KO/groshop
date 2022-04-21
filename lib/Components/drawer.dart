@@ -33,7 +33,7 @@ Drawer buildDrawer(BuildContext context) {
                   ?.copyWith(fontSize: 22, letterSpacing: 0.5),
             ),
           ),
-          buildListTile(context, Icons.home, locale.home, ProductsScreen()),
+          // buildListTile(context, Icons.home, locale.home, ProductsScreen()),
           buildListTile(
               context, Icons.account_box, locale.myProfile, MyAccount()),
           buildListTile(

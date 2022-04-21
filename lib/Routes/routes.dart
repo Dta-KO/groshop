@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:groshop/Auth/Login/sign_in.dart';
-import 'package:groshop/Auth/Login/sign_up.dart';
-import 'package:groshop/Auth/Login/verification.dart';
 import 'package:groshop/Pages/Checkout/PaymentMode.dart';
-import 'package:groshop/screen/address_page.dart';
-import 'package:groshop/screen/home_screen.dart';
-import 'package:groshop/screen/products_screen.dart';
 import 'package:groshop/Pages/Other/language_choose.dart';
 import 'package:groshop/Pages/Search/cart.dart';
 import 'package:groshop/landing/landing_page.dart';
+import 'package:groshop/screen/Login/sign_in.dart';
+import 'package:groshop/screen/Login/sign_up.dart';
+import 'package:groshop/screen/Login/verification.dart';
+import 'package:groshop/screen/address_page.dart';
+import 'package:groshop/screen/home_screen.dart';
 
 import '../screen/ConfirmOrder.dart';
 
@@ -25,15 +24,13 @@ class PageRoutes {
   static const String chooseLanguage = 'chooseLanguage';
   static const String landingPage = 'landingPage';
 
-  Map<String, WidgetBuilder> routes() {
+  static Map<String, WidgetBuilder> routes() {
     return {
       homePage: (context) => HomeScreen(),
       signInRoot: (context) => SignIn(),
       signUp: (context) => SignUp(),
-      verification: (context) => VerificationPage(() {
-            Navigator.popAndPushNamed(context, PageRoutes.homePage);
-          }),
-      productsScreen: (context) => ProductsScreen(),
+      // verification: (context) => VerificationPage(),
+      // productsScreen: (context) => ProductsScreen(),
       cartPage: (context) => CartPage(() => Navigator.pop(context)),
       selectAddress: (context) => AddressPage(
             () => Navigator.pop(context),

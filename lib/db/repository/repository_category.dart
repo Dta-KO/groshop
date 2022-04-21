@@ -7,11 +7,12 @@
  */
 import 'package:groshop/models/category.dart';
 
-abstract class RepositoryCategory{
+abstract class RepositoryCategory {
   Future<Category> getCategoryByName(String name);
 
   Future<List<Category>> getCategories();
 
+  Future<List<Category>> getSubCategoriesByName(String name);
+
   Future<void> removeCategory(Category category);
 }
-

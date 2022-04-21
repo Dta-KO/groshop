@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Nguyen Kim Khanh on 4/21/22, 12:54 AM
+  ~     goodhere.cpm@gmail.com
+  ~     Last modified 4/21/22, 12:54 AM
+  ~     Copyright (c) 2022.
+  ~     All rights reserved.
+  -->
+
+<resources>
+    <string name="app_name">Good Here</string>
+    <string name="facebook_app_id">565245158104303</string>
+    <string name="fb_login_protocol_scheme">fb565245158104303</string>
+    <string name="facebook_client_token">db20f359812d1f8655cbc17c2fc05872</string>
+</resources>

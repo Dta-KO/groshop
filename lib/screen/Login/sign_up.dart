@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:groshop/Components/custom_button.dart';
 import 'package:groshop/Components/entry_field.dart';
-import 'package:groshop/Locale/locales.dart';
 import 'package:groshop/Routes/routes.dart';
 import 'package:groshop/Theme/colors.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
+
+import '../../utils/geo_support.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -13,15 +16,24 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String? sex;
+  TextEditingController addressController = TextEditingController();
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
-    var locale = AppLocalizations.of(context);
-    List<String> sexLabels = [locale.male, locale.female];
+    List<String> sexLabels = ["Nam", "Nữ"];
+    String? currentAddress;
+    determinePosition().then((value) {
+      Position positionDevice = value;
+      getAddress(positionDevice.latitude, positionDevice.longitude)
+          .then((value) {
+        currentAddress = value;
+      });
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          locale.register,
+          "Đăng Ký Thông Tin",
           style: TextStyle(color: kMainTextColor),
         ),
         centerTitle: true,
@@ -34,25 +46,48 @@ class _SignUpState extends State<SignUp> {
             flex: 1,
           ),
           EntryField(
-            label: locale.fullName,
-            hint: locale.enterFullName,
+            label: "Họ Tên (*)",
+            hint: (user != null && user!.displayName != null)
+                ? user!.displayName
+                : "Nhập họ tên",
             keyboardType: TextInputType.name,
             suffixIcon: Icons.person_outline_rounded,
           ),
           EntryField(
-            label: locale.emailAddress,
-            hint: locale.enterEmailAddress,
+            label: "Số điện thoại (*)",
+            hint: (user != null && user!.phoneNumber != null)
+                ? user!.phoneNumber
+                : "Nhập số điện thoại của bạncủa bạn",
+            controller: addressController,
             keyboardType: TextInputType.emailAddress,
             suffixIcon: Icons.alternate_email_outlined,
           ),
           EntryField(
-            label: locale.address,
-            hint: locale.addAddress,
+            label: "Email (Tùy chọn)",
+            hint: (user != null && user!.email != null)
+                ? user!.email
+                : "Nhập email của bạn",
+            controller: addressController,
+            keyboardType: TextInputType.emailAddress,
+            suffixIcon: Icons.alternate_email_outlined,
+          ),
+          EntryField(
+            label: "Địa chỉ (*)",
+            hint: currentAddress != null
+                ? currentAddress
+                : "Nhập địa chỉ của bạn",
+            controller: addressController,
+            keyboardType: TextInputType.emailAddress,
+            suffixIcon: Icons.alternate_email_outlined,
+          ),
+          EntryField(
+            label: "CBV",
+            hint: "fgj",
             suffixIcon: Icons.place_outlined,
           ),
           EntryField(
-            label: locale.birthday,
-            hint: locale.enterBirthday,
+            label: "Ngày sinh (Tùy chọn)",
+            hint: "Nhập ngày sinh",
             keyboardType: TextInputType.datetime,
           ),
           RadioButtonGroup(

@@ -1,50 +1,26 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:groshop/landing/landing_page.dart';
-
-import 'Locale/locales.dart';
-import 'Routes/routes.dart';
-import 'Theme/style.dart';
-import 'language_cubit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:groshop/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      // options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId),
-      );
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.green));
-  runApp(Phoenix(child: GoodHere()));
-}
-
-class GoodHere extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<LanguageCubit>(
-      create: (context) => LanguageCubit(),
-      child: BlocBuilder<LanguageCubit, Locale>(
-        builder: (_, locale) {
-          return MaterialApp(
-            localizationsDelegates: [
-              const AppLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            supportedLocales: [
-              const Locale('en'),
-            ],
-            locale: locale,
-            theme: appTheme,
-            home: LandingPage(),
-            routes: PageRoutes().routes(),
-          );
-        },
-      ),
-    );
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.always ||
+      permission == LocationPermission.whileInUse) {
+    runApp(Phoenix(child: MyApp()));
+  } else {
+    Fluttertoast.showToast(
+        msg:
+            "Bạn cần cấp quyền truy cập vị trí để sử dụng ứng dụng này. \nĐóng ứng dụng và mở lại sau khi cấp quyền truy cập vị trí.",
+        toastLength: Toast.LENGTH_LONG);
+    await Geolocator.openAppSettings();
+    await Geolocator.openLocationSettings();
   }
 }

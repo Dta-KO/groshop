@@ -12,17 +12,21 @@ import 'package:scoped_model/scoped_model.dart';
 
 class ViewModelCategory extends Model {
   List<Category> _categories = [];
+  List<Category> _subCategories = [];
+
+  List<Category> get subCategories => _subCategories;
 
   List<Category> get categories => _categories;
 
   RepositoryCategory repositoryCategory = RepositoryCategoryImpl();
 
-  ViewModelCategory() {
-    getCategories();
-  }
-
   void getCategories() async {
     _categories = await repositoryCategory.getCategories();
+    notifyListeners();
+  }
+
+  void getSubCategories(String id) async {
+    _subCategories = await repositoryCategory.getSubCategoriesByName(id);
     notifyListeners();
   }
 }

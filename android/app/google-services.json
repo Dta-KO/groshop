@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1081219893511-g02auie0o1r3eoa9de819dgpo3ig0lm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goodhere.user",
+            "certificate_hash": "f1392d00d459106d2b96bbe1f84d47c396ede0b6"
+          }
+        },
+        {
           "client_id": "1081219893511-1rsteqhg91b2k4886laj4ahkhdu4lneb.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "1081219893511-1rsteqhg91b2k4886laj4ahkhdu4lneb.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1081219893511-s1quffeusb06cv8hao5gkuk9er4f13jb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.goodhere.user"
+              }
             }
           ]
         }
