@@ -1,7 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:groshop/Pages/User/my_account.dart';
+import 'package:groshop/screen/my_account.dart';
 
 import '../screen/home_screen.dart';
 import '../screen/my_orders.dart';

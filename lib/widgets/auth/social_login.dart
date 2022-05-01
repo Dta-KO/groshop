@@ -17,47 +17,6 @@ import '../../Routes/routes.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
-signInWithPhone(
-    String phoneNumber, String? smsCode, BuildContext context) async {
-  await _auth.verifyPhoneNumber(
-    phoneNumber: "+84" + phoneNumber,
-    timeout: const Duration(seconds: 60),
-    verificationCompleted: (PhoneAuthCredential credential) async {
-      User? user = (await _auth.signInWithCredential(credential)).user;
-
-      assert(user?.displayName != null);
-      assert(user!.isAnonymous);
-      assert(user?.phoneNumber != null);
-
-      final User currentUser = _auth.currentUser!;
-      assert(user?.uid == currentUser.uid);
-      // Once signed in, return the UserCredential
-      Navigator.pushNamedAndRemoveUntil(context, PageRoutes.signUp, (route) =>false);
-    },
-    verificationFailed: (FirebaseAuthException e) {
-      if (e.code == 'invalid-phone-number') {
-        Fluttertoast.showToast(
-            msg: 'Số điện thoại không khả dụng.\nVui lòng nhập lại.');
-      } else {
-        Fluttertoast.showToast(
-            msg:
-                "Xác thực không thành công!\nVui lòng thử lại trong giây lát.");
-      }
-    },
-    codeSent: (String verificationId, int? resendToken) async {
-      if(smsCode!=null){
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: smsCode);
-        // Sign the user in (or link) with the credential
-        await _auth.signInWithCredential(credential);
-      }
-    },
-    codeAutoRetrievalTimeout: (String verificationId) {
-
-    },
-  );
-}
-
 Future<User?> signInWithGoogle(BuildContext context) async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

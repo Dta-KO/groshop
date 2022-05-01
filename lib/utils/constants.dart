@@ -59,6 +59,16 @@ class Constants {
 
   //for USER
   static const String ID = "id";
+  static const String FLAGGED_USER_ID = "flagged_user_id";
+  static const String FLAG_REASON = "flag_reason";
+  static const String FLAGGED_BY_USER_ID = "flagged_by_user_id";
+  static const String USER_STATUS = "user_status";
+  static const String USER_GEO_POINT = "user_geo_point";
+  static const String USER_REG_DATE = "userRegDate";
+  static const String USER_LAST_LOGIN = "userLastLogin";
+  static const String USER_DEVICE_TOKEN = "userDeviceToken";
+  static const String USER_COUNTRY = "user_country";
+  static const String USER_LOCALITY = "user_locality";
   static const String NAME = "name";
   static const String PHONE_NUMBER = "phoneNumber";
   static const String ADDRESS = "address";
@@ -67,10 +77,13 @@ class Constants {
   static const String BIRTHDAY = "birthday";
   static const String AMOUNT = "amount";
   static const String IMAGE = "image";
+  static const String STATUS = "status";
   static const String PURCHASED_PRODUCTS = "purchasedProducts";
   static const String ORDER_PRODUCTS = "orderProducts";
   static const String TOKEN = "token";
-
+  static const String HEADING = "heading";
+  static const String LAT = "lat";
+  static const String LNG = "lng";
 
   ///
   /// DATABASE COLLECTIONS FIELD - SECTION
@@ -78,9 +91,7 @@ class Constants {
   /// FIREBASE MESSAGING TOPIC
   static const NOTIFY_USERS = "NOTIFY_USERS";
 
-
-
-
   static const String noProductDemo =
       "https://raw.githubusercontent.com/Dta-KO/Dta-KO.github.io/339952e851cc97b9ee7840aa390883cc2952f955/no_image.png";
+
 }

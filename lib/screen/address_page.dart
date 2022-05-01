@@ -19,8 +19,8 @@ class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
     // var locale = AppLocalizations.of(context);
-    List<Address> addresses = [
-      Address(
+    List<GHAddress> addresses = [
+      GHAddress(
           heading: "Nhà riêng",
           address: 'Xóm 2, Vân Trường, Tiền Hải, Thái Bình'),
     ];

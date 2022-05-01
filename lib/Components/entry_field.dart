@@ -14,7 +14,7 @@ class EntryField extends StatefulWidget {
   final IconData? suffixIcon;
   final Function? onTap;
   final TextCapitalization? textCapitalization;
-  final Function? onSuffixPressed;
+  final Function()? onSuffixPressed;
   final double? horizontalPadding;
   final double? verticalPadding;
   final FontWeight? labelFontWeight;
@@ -92,18 +92,17 @@ class _EntryFieldState extends State<EntryField> {
             maxLength: widget.maxLength,
             maxLines: widget.maxLines ?? 1,
             decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color:  widget.underlineColor ?? Colors.grey,
-                  ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.green)
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
                     widget.suffixIcon,
                     size: 30.0,
-                    color: Theme.of(context).backgroundColor,
+                    color: Colors.green,
                   ),
-                  onPressed: ()=>widget.onSuffixPressed,
+                  onPressed: widget.onSuffixPressed,
                 ),
                 hintText: widget.hint,
                 hintStyle: widget.hintStyle ??

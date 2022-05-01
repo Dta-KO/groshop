@@ -1,15 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:groshop/Components/custom_button.dart';
 import 'package:groshop/Components/entry_field.dart';
-import 'package:groshop/widgets/auth/social_login.dart';
+import 'package:groshop/db/viewmodel/user_model.dart';
+import 'package:groshop/landing/landing_page.dart';
+import 'package:groshop/screen/Login/sign_in.dart';
+import 'package:groshop/screen/Login/sign_up.dart';
+import 'package:groshop/widgets/dialog.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import '../../widgets/progress_dialog.dart';
 
 class VerificationPage extends StatefulWidget {
-  final VoidCallback onVerificationDone;
-  final String phoneNumber;
+  final String verificationId;
 
-  VerificationPage(
-      {required this.onVerificationDone, required this.phoneNumber});
+  VerificationPage({required this.verificationId});
 
   @override
   _VerificationPageState createState() {
@@ -19,10 +26,11 @@ class VerificationPage extends StatefulWidget {
 
 class _VerificationPageState extends State<VerificationPage> {
   TextEditingController smsController = TextEditingController();
+  late ProgressDialog _pr;
 
   @override
   Widget build(BuildContext context) {
-    String? smsCode;
+    _pr = ProgressDialog(context, isDismissible: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -58,18 +66,19 @@ class _VerificationPageState extends State<VerificationPage> {
             ),
             EntryField(
               hint: "123456",
+              controller: smsController,
             ),
             CustomButton(
               onTap: () {
                 setState(() {
-                  if (smsController.text.isNotEmpty) {
-                    smsCode = smsController.text;
+                  if (smsController.text.isNotEmpty &&
+                      smsController.text.trim().length == 6) {
+                    validateOtp(smsController.text);
                   } else {
-                    Fluttertoast.showToast(msg: "Vui lòng nhập mã xác thực.");
+                    Fluttertoast.showToast(
+                        msg: "Vui lòng nhập đúng mã xác thực.");
                   }
-
                 });
-
               },
               margin: 28,
               radius: 5,
@@ -93,17 +102,77 @@ class _VerificationPageState extends State<VerificationPage> {
                       text: "  ",
                     ),
                     TextSpan(
-                        text: "Gửi lại",
+                        text: "Hãy thử lại",
                         style: TextStyle(
                             color: Colors.green,
                             fontWeight: FontWeight.bold,
                             fontSize: 16))
                   ])),
-              onTap: signInWithPhone(widget.phoneNumber, smsCode, context),
+              onTap: () {
+                Future(() {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => SignIn()));
+                });
+              },
             ))
           ],
         ),
       ),
     );
+  }
+
+  Future<String?> validateOtp(String otp) async {
+    /// Handle entered verification code here
+    ///
+    /// Show progress dialog
+    _pr.show("Đang thực thi...");
+
+    await UserModel().signInWithOTP(
+        verificationId: widget.verificationId,
+        otp: otp,
+        checkUserAccount: () {
+          /// Auth user account
+          UserModel().authUserAccount(homeScreen: () {
+            /// Go to home screen
+            _nextScreen(LandingPage());
+          }, signUpScreen: () async {
+            // AppHelper instance
+            /// Check location permission
+            if (await Permission.location.serviceStatus.isEnabled) {
+              _nextScreen(SignUp());
+            } else {
+              Fluttertoast.showToast(
+                  msg:
+                      "Bạn cần cho phép ứng dụng sử dụng quyền truy cập vị trí.");
+              PermissionStatus status = await Permission.location.request();
+              if (status.isGranted) {
+                _nextScreen(SignUp());
+              } else {
+                exit(0);
+              }
+            }
+          });
+        },
+        onError: () async {
+          // Hide dialog
+          await _pr.hide();
+          // Show error message to user
+          errorDialog(context,
+              message: "Chúng tôi không thể xác minh số điện thoại của bạn.");
+        });
+
+    // Hide progress dialog
+    await _pr.hide();
+
+    return null;
+  }
+
+  /// Navigate to next page
+  void _nextScreen(screen) {
+    // Go to next page route
+    Future(() {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => screen), (route) => false);
+    });
   }
 }

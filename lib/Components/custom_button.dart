@@ -41,9 +41,7 @@ class _CustomButtonState extends State<CustomButton> {
       child: ElevatedButton(
         onPressed: widget.onTap,
         style: ElevatedButton.styleFrom(
-          primary: widget.color ?? Theme
-              .of(context)
-              .primaryColor,
+          primary: widget.color ?? Colors.green,
           shadowColor: Colors.grey,
           elevation: 5,
           padding: EdgeInsets.all(widget.padding??0),

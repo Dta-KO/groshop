@@ -24,42 +24,42 @@ class ProductsScreen extends StatelessWidget {
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store1.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store2.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store3.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store1.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store2.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store3.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       )
     ];
@@ -141,7 +141,7 @@ class ProductsScreen extends StatelessWidget {
                             .headline6
                             ?.copyWith(color: Colors.white, fontSize: 18),
                         decoration: InputDecoration(
-                          hintText: "Tìm kiếm trên Good Here...",
+                          hintText: "Tìm kiếm...",
                           hintStyle:
                               TextStyle(color: Colors.white, fontSize: 16),
                           contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -163,7 +163,7 @@ class ProductsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Danh mục sản phẩm",
+                      "Danh mục",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
@@ -197,7 +197,7 @@ class ProductsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Cửa hàng gần bạn",
+                      "Gần bạn",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -210,7 +210,7 @@ class ProductsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Sản phẩm khuyến mại",
+                      "Yêu thích",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),

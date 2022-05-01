@@ -8,13 +8,11 @@ import 'package:groshop/widgets/categories/category_ui.dart';
 import 'package:groshop/widgets/vendor/vendor_ui.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-import '../models/category.dart';
 import '../models/product.dart';
 import '../models/vendor.dart';
 import '../widgets/products/products_ui.dart';
 
-class HomeScreen extends StatelessWidget  {
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> carouselImages = [
@@ -28,42 +26,42 @@ class HomeScreen extends StatelessWidget  {
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store1.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store2.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store3.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store1.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store2.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       ),
       Vendor(
         id: "1",
         name: "Cửa hàng Kim Khánh",
         image: 'assets/StoreImages/store3.png',
-        address: Address(),
+        address: GHAddress(),
         rating: 5,
       )
     ];
@@ -128,8 +126,7 @@ class HomeScreen extends StatelessWidget  {
                       autoPlay: true,
                       viewportFraction: 0.9,
                       enlargeCenterPage: false,
-                      onPageChanged: (index, reason) {
-                      }),
+                      onPageChanged: (index, reason) {}),
                 ),
                 InkWell(
                   child: Container(
@@ -161,18 +158,20 @@ class HomeScreen extends StatelessWidget  {
                 ),
                 Container(
                     height: 130,
-                    child: ScopedModelDescendant<ViewModelCategory>(builder: (context, child, model) {
-                      model.getCategories();
-                      return ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: model.categories.length,
-                          itemBuilder: (context, index) {
-                            return buildCategoryRow(index, context, model.categories);
-                          });
-                    },)
-                ),
+                    child: ScopedModelDescendant<ViewModelCategory>(
+                      builder: (context, child, model) {
+                        model.getCategories();
+                        return ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: model.categories.length,
+                            itemBuilder: (context, index) {
+                              return buildCategoryRow(
+                                  index, context, model.categories);
+                            });
+                      },
+                    )),
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   child: Column(

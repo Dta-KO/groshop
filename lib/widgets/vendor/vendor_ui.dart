@@ -33,7 +33,7 @@ Column buildCompleteVerticalListVendor(AppLocalizations locale,
 
 Container buildListVendor(List<Vendor> vendors) {
   return Container(
-    height: 240,
+    height: double.minPositive,
     child: ListView.builder(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
@@ -43,7 +43,7 @@ Container buildListVendor(List<Vendor> vendors) {
           return Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Container(
-              width: MediaQuery.of(context).size.width / 2.5,
+              width: double.minPositive,
               child: buildVendorCard(
                   context,
                   vendors[index].image!,
@@ -57,7 +57,7 @@ Container buildListVendor(List<Vendor> vendors) {
 }
 
 Widget buildVendorCard(BuildContext context, String image, String name,
-    Address address, int? rating,
+    GHAddress address, int? rating,
     {bool favourites = false}) {
   return GestureDetector(
     onTap: () {
@@ -65,15 +65,15 @@ Widget buildVendorCard(BuildContext context, String image, String name,
           context, MaterialPageRoute(builder: (context) => ProductInfo()));
     },
     child: Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Stack(
           children: [
             Image.asset(
               image,
-              width: MediaQuery.of(context).size.width / 2.5,
-              height: MediaQuery.of(context).size.width / 2.5,
-              fit: BoxFit.fill,
+              width: 100,
+              fit: BoxFit.fitWidth,
             ),
             favourites
                 ? Align(
@@ -82,7 +82,7 @@ Widget buildVendorCard(BuildContext context, String image, String name,
                       onPressed: () {},
                       icon: Icon(
                         Icons.favorite,
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.red,
                       ),
                     ),
                   )
@@ -91,12 +91,18 @@ Widget buildVendorCard(BuildContext context, String image, String name,
         ),
         Text(name, style: TextStyle(fontWeight: FontWeight.w500)),
         Container(
-          width: MediaQuery.of(context).size.width / 2,
+          width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("141/1 Nguyễn Công Trứ...",
-                  style: TextStyle(color: Colors.grey, fontSize: 10)),
+              RichText(
+                overflow: TextOverflow.ellipsis,
+                strutStyle: StrutStyle(fontSize: 10.0),
+                text: TextSpan(
+                    style: TextStyle(color: Colors.black),
+                    text: '141/1 Nguyễn Công Trứ ABC DEF'),
+              ),
+              SizedBox(width: 10,),
               buildRating(context),
             ],
           ),

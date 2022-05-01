@@ -8,6 +8,47 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+/// Success Dialog
+void successDialog(
+    BuildContext context, {
+      required String message,
+      Widget? icon,
+      String? title,
+      String? negativeText,
+      VoidCallback? negativeAction,
+      String? positiveText,
+      VoidCallback? positiveAction,
+    }) {
+  _buildDialog(context, "success",
+      message: message,
+      icon: icon,
+      title: title,
+      negativeText: negativeText,
+      negativeAction: negativeAction,
+      positiveText: positiveText,
+      positiveAction: positiveAction);
+}
+
+/// Error Dialog
+void errorDialog(
+    BuildContext context, {
+      required String message,
+      Widget? icon,
+      String? title,
+      String? negativeText,
+      VoidCallback? negativeAction,
+      String? positiveText,
+      VoidCallback? positiveAction,
+    }) {
+  _buildDialog(context, "error",
+      message: message,
+      icon: icon,
+      title: title,
+      negativeText: negativeText,
+      negativeAction: negativeAction,
+      positiveText: positiveText,
+      positiveAction: positiveAction);
+}
 
 void confirmDialog(
   BuildContext context, {

@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:groshop/main.dart';
+import 'package:groshop/screen/Login/sign_up.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -25,4 +26,8 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+  Widget testWidget = new MediaQuery(
+      data: new MediaQueryData(),
+      child: new MaterialApp(home: SignUp())
+  );
 }

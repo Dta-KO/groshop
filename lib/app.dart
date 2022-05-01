@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:groshop/Routes/routes.dart';
 import 'package:groshop/landing/landing_page.dart';
 import 'package:groshop/screen/Login/sign_in.dart';
+import 'package:google_map_location_picker/generated/l10n.dart' as location_picker;
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'Theme/style.dart';
 
 class MyApp extends StatefulWidget {
   static final String route = "/MyApp";
@@ -91,10 +95,17 @@ class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        location_picker.S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const <Locale>[
+        Locale('vi', 'VN'),
+      ],
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColor: Colors.green,
-          appBarTheme: AppBarTheme(color: Colors.green)),
+      theme: appTheme,
       routes: PageRoutes.routes(),
       home: RenderFirstScreen(),
     );

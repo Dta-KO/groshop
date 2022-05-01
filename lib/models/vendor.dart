@@ -6,7 +6,7 @@ class Vendor {
   String id;
   String? name;
   String? phoneNumber;
-  Address? address;
+  GHAddress? address;
   String? email;
   String? sex;
   int? rating;

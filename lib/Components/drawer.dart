@@ -7,7 +7,7 @@ import 'package:groshop/Pages/DrawerPages/my_orders_drawer.dart';
 import 'package:groshop/screen/products_screen.dart';
 import 'package:groshop/Pages/Other/language_choose.dart';
 import 'package:groshop/Pages/Other/offers.dart';
-import 'package:groshop/Pages/User/my_account.dart';
+import 'package:groshop/screen/my_account.dart';
 import 'package:groshop/Pages/User/wishlist.dart';
 
 Drawer buildDrawer(BuildContext context) {
